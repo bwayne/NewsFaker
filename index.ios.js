@@ -3,6 +3,8 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
+var styles = require('./styles.ios.js')
+
 import React, {
   AppRegistry,
   Component,
@@ -47,31 +49,5 @@ class NewsFaker extends Component {
     );
   }
 }
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  TextInput: {
-    height: 40, 
-    borderColor: 'gray', 
-    borderWidth: 1
-  }
-});
 
 AppRegistry.registerComponent('NewsFaker', () => NewsFaker);
