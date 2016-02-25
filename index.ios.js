@@ -19,7 +19,7 @@ var compositions = [{
   image:        "image.png"
 }]
 
-class TacoProject extends Component {
+class NewsFaker extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('TacoProject', () => TacoProject);
+AppRegistry.registerComponent('NewsFaker', () => NewsFaker);

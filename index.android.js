@@ -11,7 +11,7 @@ import React, {
   View
 } from 'react-native';
 
-class TacoProject extends Component {
+class NewsFaker extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('TacoProject', () => TacoProject);
+AppRegistry.registerComponent('NewsFaker', () => NewsFaker);
