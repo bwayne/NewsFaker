@@ -21,7 +21,7 @@ var compositions = [{
   image:        "image.png"
 }]
 
-class NewsFaker extends Component {
+class Main extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -43,9 +43,28 @@ class NewsFaker extends Component {
         </Text>
         <TextInput style={styles.TextInput} onChange={this.onType.bind(this)}/>
         <Text style={styles.instructions}>
-        {this.state.searchString}
+          {this.state.searchString}
         </Text>
       </View>
+    );
+  }
+}
+
+class test extends Component {
+  render() {
+    return React.createElement(React.Text, {style: styles.welcome}, "Hello World!");
+  }
+}
+
+class NewsFaker extends Component {
+    render() {
+    return (
+      <React.NavigatorIOS
+        style={styles.navContainer}
+        initialRoute={{
+          title: 'NewsFaker',
+          component: test,
+        }}/>
     );
   }
 }
