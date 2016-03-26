@@ -13,7 +13,8 @@ import React, {
   Image,
   Button,
   View,
-  TextInput
+  TextInput,
+  NavigatorIOS,
 } from 'react-native';
 
 var compositions = [{
@@ -39,7 +40,7 @@ class Main extends Component {
           {composition.headline}
         </Text>
         <Text style={styles.instructions}>
-          "Type something here"
+          "Welcome to NewsFaker"
         </Text>
         <TextInput style={styles.TextInput} onChange={this.onType.bind(this)}/>
         <Text style={styles.instructions}>
@@ -52,7 +53,13 @@ class Main extends Component {
 
 class test extends Component {
   render() {
-    return React.createElement(React.Text, {style: styles.welcome}, "Hello World!");
+    return (
+      <View style={styles.container}>
+        <Text style={styles.instructions}>
+          "Hello World"
+        </Text>
+      </View>
+    );
   }
 }
 
@@ -63,7 +70,7 @@ class NewsFaker extends Component {
         style={styles.navContainer}
         initialRoute={{
           title: 'NewsFaker',
-          component: test,
+          component: Main,
         }}/>
     );
   }

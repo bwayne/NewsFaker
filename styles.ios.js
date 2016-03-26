@@ -5,10 +5,9 @@ import React, {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    paddingTop: 150,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
@@ -24,6 +23,9 @@ const styles = StyleSheet.create({
     height: 40, 
     borderColor: 'gray', 
     borderWidth: 1
+  },
+  navContainer: {
+    flex: 1
   }
 });
 
