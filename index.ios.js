@@ -27,16 +27,27 @@ class SetupPage extends Component {
 
   constructor(props) {
     super(props)
+    this.nextPage = this.nextPage.bind(this)
     this.state = {
-      searchString: 'Fill in Headline'
+      searchString: ''
     }
   }
+
   onType(e) {
     this.setState({searchString: e.nativeEvent.text})
   }
 
-  nextScreen() {
+  nextPage(e) {
+    if (this.state.searchString.length > 0) {
+      this.props.navigator.push({
+          title: 'From Right',
+          component: DisplayPage,
+          passProps: {inputString: this.state.searchString}
 
+      });
+    } else {
+      alert("Please Enter Something")
+    }
   }
 
   render() {
@@ -53,15 +64,23 @@ class SetupPage extends Component {
         <Text style={styles.instructions}>
           {this.state.searchString}
         </Text>
-        <NextButton
-          onPress={this._handlePress}>
-        </NextButton>
+        <Button
+          style={styles.button}
+          containerStyle={styles.buttonContainer}
+          onPress={this.nextPage}
+        >
+          Next
+        </Button>
       </View>
     );
   }
 }
 
 class DisplayPage extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -69,7 +88,7 @@ class DisplayPage extends Component {
           "You Entered the Following"
         </Text>
         <Text style={styles.instructions}>
-          {this.state.searchString}
+          {this.props.inputString}
         </Text>
       </View>
     );
@@ -85,15 +104,15 @@ class NewsFaker extends Component {
       setupPage: {
         title: 'NewsFaker',
         component: SetupPage,
-        rightButtonTitle: 'Next',
-        onRightButtonPress: this.onRightButtonPress
+      },
+      displayPage: {
+        title: 'Display',
+        component: DisplayPage
       }
     }
   }
 
   onRightButtonPress (props) {
-    debugger
-    console.log(this);
     this.refs.nav.push({
         title: 'From Right',
         component: DisplayPage
@@ -110,23 +129,6 @@ class NewsFaker extends Component {
   }
 }
 
-var NextButton = React.createClass({
-  render() {
-    return (
-      <Button
-        style={styles.button}
-        containerStyle={styles.buttonContainer}
-        onPress={this._handlePress}
-      >
-        Next
-      </Button>
-    );
-  },
-
-  _handlePress(event) {
-    console.log('Pressed!');
-  },
-});
 
 
 AppRegistry.registerComponent('NewsFaker', () => NewsFaker);
