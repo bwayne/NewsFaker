@@ -29,14 +29,6 @@ class SetupPage extends Component {
       searchString: 'Fill in Headline'
     }
   }
-
-  onRightButtonPress (props) {
-        this.refs.nav.push({
-            title: 'From Right',
-            component: DisplayPage
-        });
-  }
-
   onType(e) {
     this.setState({searchString: e.nativeEvent.text})
   }
@@ -75,6 +67,13 @@ class DisplayPage extends Component {
 }
 
 class NewsFaker extends Component {
+  onRightButtonPress (props) {
+        this.refs.nav.push({
+            title: 'From Right',
+            component: DisplayPage
+        });
+  }
+
   render() {
     return (
       <React.NavigatorIOS
