@@ -18,17 +18,25 @@ import React, {
 } from 'react-native';
 
 var compositions = [{
-  headline:     "Cold Dive into React Native: A Beginner's Tutorial",
+  headline:     "Welcome to NewsFaker",
   image:        "image.png"
 }]
 
-class Main extends Component {
+class SetupPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchString: 'This is the search string'
+      searchString: 'Fill in Headline'
     }
   }
+
+  onRightButtonPress (props) {
+        this.refs.nav.push({
+            title: 'From Right',
+            component: DisplayPage
+        });
+  }
+
   onType(e) {
     this.setState({searchString: e.nativeEvent.text})
   }
@@ -40,7 +48,7 @@ class Main extends Component {
           {composition.headline}
         </Text>
         <Text style={styles.instructions}>
-          "Welcome to NewsFaker"
+          "Please Enter Your Headline Here then hit Next"
         </Text>
         <TextInput style={styles.TextInput} onChange={this.onType.bind(this)}/>
         <Text style={styles.instructions}>
@@ -51,12 +59,15 @@ class Main extends Component {
   }
 }
 
-class test extends Component {
+class DisplayPage extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.welcome}>
+          "You Entered the Following"
+        </Text>
         <Text style={styles.instructions}>
-          "Hello World"
+          {this.state.searchString}
         </Text>
       </View>
     );
@@ -64,13 +75,15 @@ class test extends Component {
 }
 
 class NewsFaker extends Component {
-    render() {
+  render() {
     return (
       <React.NavigatorIOS
         style={styles.navContainer}
         initialRoute={{
           title: 'NewsFaker',
-          component: Main,
+          component: SetupPage,
+          rightButtonTitle: 'Next',
+          onRightButtonPress: this.onRightButtonPress
         }}/>
     );
   }
