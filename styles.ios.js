@@ -33,6 +33,17 @@ const styles = StyleSheet.create({
   navContainer: {
     // flexDirection: 'column'
     flex: 1
+  },
+  buttonContainer: {
+    padding:10, 
+    height:45, 
+    overflow:'hidden', 
+    borderRadius:4, 
+    backgroundColor: 'white'
+  },
+  button: {
+    fontSize: 20,
+    color: 'green'
   }
 });
 

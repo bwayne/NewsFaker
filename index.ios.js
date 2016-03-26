@@ -4,6 +4,7 @@
  */
 'use strict';
 var styles = require('./styles.ios.js')
+var Button = require('react-native-button');
 
 import React, {
   AppRegistry,
@@ -11,10 +12,10 @@ import React, {
   StyleSheet,
   Text,
   Image,
-  Button,
   View,
   TextInput,
   NavigatorIOS,
+  TouchableHighlight,
 } from 'react-native';
 
 var compositions = [{
@@ -23,6 +24,7 @@ var compositions = [{
 }]
 
 class SetupPage extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -33,6 +35,10 @@ class SetupPage extends Component {
     this.setState({searchString: e.nativeEvent.text})
   }
 
+  nextScreen() {
+
+  }
+
   render() {
     var composition = compositions[0];
     return (
@@ -41,12 +47,15 @@ class SetupPage extends Component {
           {composition.headline}
         </Text>
         <Text style={styles.instructions}>
-          "Please Enter Your Headline Here then hit Next"
+          Enter Your Headline Below Then Hit Next
         </Text>
         <TextInput style={styles.TextInput} onChange={this.onType.bind(this)}/>
         <Text style={styles.instructions}>
           {this.state.searchString}
         </Text>
+        <NextButton
+          onPress={this._handlePress}>
+        </NextButton>
       </View>
     );
   }
@@ -100,5 +109,24 @@ class NewsFaker extends Component {
     );
   }
 }
+
+var NextButton = React.createClass({
+  render() {
+    return (
+      <Button
+        style={styles.button}
+        containerStyle={styles.buttonContainer}
+        onPress={this._handlePress}
+      >
+        Next
+      </Button>
+    );
+  },
+
+  _handlePress(event) {
+    console.log('Pressed!');
+  },
+});
+
 
 AppRegistry.registerComponent('NewsFaker', () => NewsFaker);
