@@ -5,7 +5,12 @@ import React, {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 150,
+    flex: 1,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -20,11 +25,13 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   TextInput: {
-    height: 40, 
-    borderColor: 'gray', 
-    borderWidth: 1
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    textAlign: 'center'
   },
   navContainer: {
+    // flexDirection: 'column'
     flex: 1
   }
 });

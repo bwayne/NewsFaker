@@ -32,6 +32,7 @@ class SetupPage extends Component {
   onType(e) {
     this.setState({searchString: e.nativeEvent.text})
   }
+
   render() {
     var composition = compositions[0];
     return (
@@ -67,23 +68,35 @@ class DisplayPage extends Component {
 }
 
 class NewsFaker extends Component {
+
+  constructor(props){
+    super(props);
+    this.onRightButtonPress = this.onRightButtonPress.bind(this)
+    this.routes = {
+      setupPage: {
+        title: 'NewsFaker',
+        component: SetupPage,
+        rightButtonTitle: 'Next',
+        onRightButtonPress: this.onRightButtonPress
+      }
+    }
+  }
+
   onRightButtonPress (props) {
-        this.refs.nav.push({
-            title: 'From Right',
-            component: DisplayPage
-        });
+    debugger
+    console.log(this);
+    this.refs.nav.push({
+        title: 'From Right',
+        component: DisplayPage
+    });
   }
 
   render() {
     return (
       <React.NavigatorIOS
         style={styles.navContainer}
-        initialRoute={{
-          title: 'NewsFaker',
-          component: SetupPage,
-          rightButtonTitle: 'Next',
-          onRightButtonPress: this.onRightButtonPress
-        }}/>
+        ref='nav'
+        initialRoute={this.routes.setupPage}/>
     );
   }
 }
